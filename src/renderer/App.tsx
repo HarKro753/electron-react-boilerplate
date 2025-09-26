@@ -1,50 +1,59 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import { useState } from 'react';
 import './App.css';
 
-function Hello() {
+function useCounter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+  const reset = () => setCount(0);
+
+  return { count, increment, reset };
+}
+
+function App() {
+  const { count, increment, reset } = useCounter();
+
+  const openNewWindow = () => {
+    window.electron.ipcRenderer.sendMessage('open-new-window');
+  };
+
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-2xl mx-auto text-center">
+        <h1 className="text-4xl font-bold text-gray-800 mb-8">Hello World</h1>
+
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <p className="text-xl text-gray-600 mb-4">Count: {count}</p>
+          <div className="space-x-3">
+            <button
+              type="button"
+              onClick={increment}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 active:scale-95"
+            >
+              Increment Counter
+            </button>
+            <button
+              type="button"
+              onClick={reset}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 active:scale-95"
+            >
+              Reset Counter
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <button
+            type="button"
+            onClick={openNewWindow}
+            className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 active:scale-95"
+          >
+            Open New Window
           </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
+        </div>
       </div>
     </div>
   );
 }
 
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
-    </Router>
-  );
-}
+export default App;
