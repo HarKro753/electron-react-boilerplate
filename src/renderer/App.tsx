@@ -74,6 +74,12 @@ function App() {
             <textarea className="mt-1 mx-1 p-2 bg-gray-50 rounded-sm text-gray-400 text-sm resize-none">
               Patienteninfo
             </textarea>
+            <div className="text-md font-semibold mb-1 mt-4">Kontaktdaten</div>
+            <div className="text-sm ">
+              <div>+49 17645736893</div>
+              <div>krogharro@gmail.com</div>
+              <div>Jagersredder 22397 Hamburg</div>
+            </div>
           </div>
         </div>
 

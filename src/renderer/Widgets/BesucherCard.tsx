@@ -5,11 +5,16 @@ interface BesucherCardProps {
   onClick?: () => void;
 }
 
-export default function BesucherCard({ name, date, isSelected = false, onClick }: BesucherCardProps) {
+export default function BesucherCard({
+  name,
+  date,
+  isSelected = false,
+  onClick,
+}: BesucherCardProps) {
   const first2Letters = name.slice(0, 2).toUpperCase();
 
   return (
-    <div 
+    <div
       className={`border-b flex flex-row p-2 hover:bg-gray-200 cursor-pointer ${isSelected ? 'bg-blue-100' : ''}`}
       onClick={onClick}
     >

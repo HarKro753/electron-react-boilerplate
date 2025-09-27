@@ -18,7 +18,9 @@ function formatDate(date: Date): string {
   }).format(date);
 }
 
-export function getPatientRecords(patient: Patient | null): Record<string, PatientRecord[]> {
+export function getPatientRecords(
+  patient: Patient | null,
+): Record<string, PatientRecord[]> {
   if (!patient) {
     return {};
   }
