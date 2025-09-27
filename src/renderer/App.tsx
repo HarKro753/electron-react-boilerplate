@@ -1,10 +1,17 @@
 import './App.css';
+import { useState } from 'react';
 import AppBar from './AppBar';
-import { getAllRecords as getGroupedRecords } from './repository/get_grouped_records';
+import { getPatientRecords } from './repository/get_grouped_records';
+import { getPatients } from './api/getPatients';
+import { Patient } from './models/Patient';
 import BesucherCard from './Widgets/BesucherCard';
 
 function App() {
-  const groupedRecords = getGroupedRecords();
+  const patients = getPatients();
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(
+    patients[0],
+  );
+  const groupedRecords = getPatientRecords(selectedPatient);
 
   return (
     <div className="h-screen w-screen bg-gray-100 flex flex-col overflow-hidden">
@@ -17,12 +24,15 @@ function App() {
 
           {/* Besucher Liste */}
           <div className="flex-1 w-full bg-white rounded-sm mt-2 overflow-y-auto scrollbar-hide border-t border-r border-b">
-            <BesucherCard name="Bernd" date="12.03.2006" />
-            <BesucherCard name="Bruno" date="21.06.2021" />
-            <BesucherCard name="Harro" date="19.05.2016" />
-            <BesucherCard name="Lasse" date="12.03.2006" />
-            <BesucherCard name="Emil" date="12.03.2006" />
-            <BesucherCard name="Lorenz" date="12.03.2006" />
+            {patients.map((patient) => (
+              <BesucherCard
+                key={patient.id}
+                name={patient.name}
+                date={patient.lastVisit.toLocaleDateString('de-DE')}
+                isSelected={selectedPatient?.id === patient.id}
+                onClick={() => setSelectedPatient(patient)}
+              />
+            ))}
           </div>
         </div>
 
@@ -44,8 +54,15 @@ function App() {
               <div className="w-[150px] h-[150px] bg-gray-100" />
               <div className="flex flex-col justify-between p-2">
                 <div>
-                  <h1>Anna Mueller</h1>
-                  <div>*12.12.1980 (44J)</div>
+                  <h1>{selectedPatient?.name || 'Kein Patient ausgewählt'}</h1>
+                  {selectedPatient && (
+                    <div>
+                      *{selectedPatient.birthDate.toLocaleDateString('de-DE')} (
+                      {new Date().getFullYear() -
+                        selectedPatient.birthDate.getFullYear()}
+                      J)
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex flex-row gap-2">
@@ -54,10 +71,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <textarea
-              className="mt-1 mx-1 p-2 bg-gray-50 rounded-sm text-gray-400 text-sm resize-none"
-              readOnly
-            >
+            <textarea className="mt-1 mx-1 p-2 bg-gray-50 rounded-sm text-gray-400 text-sm resize-none">
               Patienteninfo
             </textarea>
           </div>

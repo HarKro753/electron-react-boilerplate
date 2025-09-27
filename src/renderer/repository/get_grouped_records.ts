@@ -1,4 +1,4 @@
-import getEpaData from '../api/getPatients';
+import { Patient } from '../models/Patient';
 
 interface PatientRecord {
   datum: Date;
@@ -7,7 +7,7 @@ interface PatientRecord {
 }
 
 function formatBefundType(type: number): string {
-  return type === 0 ? 'Laborwerte' : 'R�ntgenbild';
+  return type === 0 ? 'Laborwerte' : 'Röntgenbild';
 }
 
 function formatDate(date: Date): string {
@@ -18,26 +18,28 @@ function formatDate(date: Date): string {
   }).format(date);
 }
 
-export function getAllRecords(): Record<string, PatientRecord[]> {
-  const mockEpaData = getEpaData();
+export function getPatientRecords(patient: Patient | null): Record<string, PatientRecord[]> {
+  if (!patient) {
+    return {};
+  }
 
   const allRecords = [
-    ...mockEpaData.Diagnosen.map((d) => ({
+    ...patient.Diagnosen.map((d) => ({
       datum: d.datum,
       typ: 'ANA',
       eintrag: `${d.diagnose} - ${d.beschreibung} (${d.arzt})`,
     })),
-    ...mockEpaData.Befunde.map((b) => ({
+    ...patient.Befunde.map((b) => ({
       datum: b.Datum,
       typ: 'BEF',
       eintrag: formatBefundType(b.Typ),
     })),
-    ...mockEpaData.Medikationen.map((m) => ({
+    ...patient.Medikationen.map((m) => ({
       datum: m.startDatum,
       typ: 'MED',
       eintrag: `${m.medikament} - ${m.dosierung} (${m.arzt})`,
     })),
-    ...mockEpaData.Impfungen.map((i) => ({
+    ...patient.Impfungen.map((i) => ({
       datum: i.datum,
       typ: 'IMP',
       eintrag: `${i.impfung} - ${i.hersteller}`,
@@ -57,4 +59,8 @@ export function getAllRecords(): Record<string, PatientRecord[]> {
   );
 
   return groupedRecords;
+}
+
+export function getAllRecords(): Record<string, PatientRecord[]> {
+  return {};
 }
