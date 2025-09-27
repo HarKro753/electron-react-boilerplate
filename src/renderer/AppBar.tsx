@@ -1,5 +1,5 @@
 import { FiHome, FiSettings, FiUser } from 'react-icons/fi';
-import AppBarItem from './AppBarItem';
+import AppBarItem from './Widgets/AppBarItem';
 
 export default function AppBar() {
   return (
