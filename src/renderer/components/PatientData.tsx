@@ -4,7 +4,7 @@ interface PatientDataProps {
 
 function PatientData({ groupedRecords }: PatientDataProps) {
   return (
-    <div className="overflow-y-auto">
+    <div className="overflow-y-auto flex-[1] h-full bg-white rounded-sm border flex flex-col mr-4">
       <div>
         <div className="grid grid-cols-12 gap-2 px-3 py-2 bg-gray-100 border-b border-gray-200 text-xs font-medium text-gray-700">
           <div className="col-span-2">Datum</div>

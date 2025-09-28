@@ -12,7 +12,7 @@ import AppBarItem from './Widgets/AppBarItem';
 
 export default function AppBar() {
   return (
-    <div className="bg-white border-b border-gray-200 flex flex-row gap-6 items-center px-8 pt-2 pb-1 shadow-sm">
+    <div className="bg-white border-b border-gray-200 flex flex-row gap-6 items-center px-8 pt-2 pb-1 ">
       <AppBarItem
         icon={
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">

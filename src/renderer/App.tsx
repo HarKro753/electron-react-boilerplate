@@ -9,6 +9,7 @@ import BesucherCard from './Widgets/BesucherCard';
 import PatientInfos from './components/PatientInfos';
 import PatientData from './components/PatientData';
 import WindowWithHeader from './Templates/WindowWithHeader';
+import PatientToolbar from './components/PatientToolbar';
 
 function App() {
   const patients = getPatients();
@@ -23,9 +24,8 @@ function App() {
 
       <div className="flex flex-row h-full w-full gap-4 overflow-hidden">
         <WindowWithHeader
-          title="Besucherliste"
           className="w-[300px] h-full flex-shrink-0"
-          contentClassName="flex-1 w-full bg-white rounded-sm mt-2 overflow-y-auto scrollbar-hide border-t border-r border-b"
+          contentClassName="flex-1 w-full bg-white rounded-sm overflow-y-auto scrollbar-hide border-t border-r border-b"
         >
           {patients.map((patient) => (
             <BesucherCard
@@ -39,17 +39,16 @@ function App() {
         </WindowWithHeader>
 
         {/* Patient Infos */}
-        <WindowWithHeader title="Patienteninfos">
+        <WindowWithHeader>
           <PatientInfos selectedPatient={selectedPatient} />
         </WindowWithHeader>
 
         {/* Patient Dokumente */}
-        <WindowWithHeader
-          title="Patientendokumente"
-          className="flex-[3]"
-          contentClassName="bg-white h-full border border-gray-300 mt-2"
-        >
-          <PatientData groupedRecords={groupedRecords} />
+        <WindowWithHeader className="flex-[3]" contentClassName="">
+          <div className="flex flex-col">
+            <PatientToolbar />
+            <PatientData groupedRecords={groupedRecords} />
+          </div>
         </WindowWithHeader>
       </div>
     </div>
