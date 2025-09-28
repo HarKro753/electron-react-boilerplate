@@ -26,7 +26,7 @@ function PatientInfos({ selectedPatient }: PatientInfosProps) {
           </div>
 
           <div className="flex flex-row gap-2">
-            <div className="w-8 h-8 border-r border-l border-gray-300 rounded-sm flex items-center justify-center">
+            <div className="w-8 h-8 border border-gray-300 rounded-sm flex items-center justify-center">
               <User className="w-4 h-4 text-gray-500" />
             </div>
             <div className="w-8 h-8 border border-gray-300 rounded-sm flex items-center justify-center">
@@ -62,31 +62,35 @@ function PatientInfos({ selectedPatient }: PatientInfosProps) {
       <PatientInfoSection title="Hausarzt" showDivider>
         <div className="flex flex-col gap-1">
           <div className="flex flex-row items-center gap-2">
-            <span className="text-xs font-medium text-gray-600 w-16">
+            <span className="text-xs font-medium text-gray-600 w-16 cursor-pointer">
               Namen
             </span>
-            <div className="flex items-center gap-1 border border-gray-200 rounded px-2 py-1 h-6">
+            <div className="flex items-center gap-1 border border-gray-200 rounded px-2 py-1 h-6 cursor-pointer">
               <Search className="w-3 h-3 text-gray-500" />
               <span className="text-xs text-gray-700">Washausen, Dr.Anna</span>
-              <div className="w-3 h-3 bg-gray-400 rounded-full flex items-center justify-center cursor-pointer ml-1">
+              <div className="w-3 h-3 bg-gray-400 rounded-full flex items-center justify-center cursor-pointer ml-1 hover:bg-gray-500">
                 <X className="w-2 h-2 text-white" />
               </div>
             </div>
           </div>
           <div className="flex flex-row">
-            <span className="text-xs font-medium text-gray-600 w-16">
+            <span className="text-xs font-medium text-gray-600 w-16 cursor-pointer">
               Strasse
             </span>
-            <span className="text-xs text-gray-700">12345 Hamburg</span>
+            <span className="text-xs text-gray-700 cursor-pointer">
+              12345 Hamburg
+            </span>
           </div>
           <div className="flex flex-row">
-            <span className="text-xs font-medium text-gray-600 w-16">
+            <span className="text-xs font-medium text-gray-600 w-16 cursor-pointer">
               PLZ, Ort
             </span>
-            <span className="text-xs text-gray-700">067123, Altona</span>
+            <span className="text-xs text-gray-700 cursor-pointer">
+              067123, Altona
+            </span>
           </div>
-          <div className="flex flex-row">
-            <span className="text-xs font-medium text-gray-600 w-16">
+          <div className="flex flex-row cursor-pointer">
+            <span className="text-xs font-medium text-gray-600 w-16 cursor-pointer">
               Tel, Fax
             </span>
             <div className="flex flex-row items-center gap-2">
@@ -109,23 +113,25 @@ function PatientInfos({ selectedPatient }: PatientInfosProps) {
         >
           Besuchinfos
         </textarea>
-        <div className="ml-4">
+        <div>
           <div className="text-xs font-medium text-gray-600">Termin:</div>
-          <div className="flex flex-row gap-2">
-            <span className="text-xs font-medium text-gray-600">Status</span>
-            <span className="text-xs text-gray-700">Anwesend</span>
-          </div>
-          <div className="flex flex-row gap-2">
-            <span className="text-xs font-medium text-gray-600">Rauwatt</span>
-            <span className="text-xs text-gray-700">WZ</span>
-          </div>
-          <div className="flex flex-row gap-2">
-            <span className="text-xs font-medium text-gray-600">
-              Behandlung
-            </span>
-            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium text-white bg-red-500 leading-none">
-              SZ
-            </span>
+          <div className="ml-4 mt-1">
+            <div className="flex flex-row gap-2">
+              <span className="text-xs font-medium text-gray-600">Status</span>
+              <span className="text-xs text-gray-700">Anwesend</span>
+            </div>
+            <div className="flex flex-row gap-2">
+              <span className="text-xs font-medium text-gray-600">Rauwatt</span>
+              <span className="text-xs text-gray-700">WZ</span>
+            </div>
+            <div className="flex flex-row gap-2">
+              <span className="text-xs font-medium text-gray-600">
+                Behandlung
+              </span>
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium text-white bg-red-500 leading-none">
+                SZ
+              </span>
+            </div>
           </div>
         </div>
       </PatientInfoSection>

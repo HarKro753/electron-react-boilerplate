@@ -1,3 +1,5 @@
+import { Patient } from '../models/Patient';
+
 const mockPatientsData = [
   {
     id: 1,
@@ -153,10 +155,6 @@ const mockPatientsData = [
   },
 ];
 
-export function getPatients() {
+export function getPatients(): Patient[] {
   return mockPatientsData;
-}
-
-export default function getEpaData() {
-  return mockPatientsData[0];
 }

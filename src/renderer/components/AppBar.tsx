@@ -7,8 +7,9 @@ import {
   FileText,
   User,
   Settings,
+  Bot,
 } from 'lucide-react';
-import AppBarItem from './Widgets/AppBarItem';
+import AppBarItem from '../Widgets/AppBarItem';
 
 export default function AppBar() {
   return (
@@ -72,8 +73,23 @@ export default function AppBar() {
         label="Arztbrief"
         onClick={() => {}}
       />
+      <div className="flex-[1]" />
 
-      <div className="flex-1" />
+      <AppBarItem
+        icon={
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg">
+            <Bot size={24} color="white" />
+          </div>
+        }
+        label="Sprechstundenassistent"
+        onClick={() => {
+          window.electron?.ipcRenderer.sendMessage(
+            'open-sprechstunde-assistant',
+          );
+        }}
+      />
+
+      <div className="flex-[4]" />
 
       <AppBarItem
         icon={

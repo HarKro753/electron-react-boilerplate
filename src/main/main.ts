@@ -34,6 +34,10 @@ ipcMain.on('open-new-window', async () => {
   createNewWindow();
 });
 
+ipcMain.on('open-sprechstunde-assistant', async () => {
+  createSprechstundeAssistantWindow();
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
@@ -141,6 +145,38 @@ const createNewWindow = async () => {
   newWindow.loadURL(resolveHtmlPath('index.html'));
 
   newWindow.on('closed', () => {
+    // Window will be automatically garbage collected
+  });
+};
+
+const createSprechstundeAssistantWindow = async () => {
+  const RESOURCES_PATH = app.isPackaged
+    ? path.join(process.resourcesPath, 'assets')
+    : path.join(__dirname, '../../assets');
+
+  const getAssetPath = (...paths: string[]): string => {
+    return path.join(RESOURCES_PATH, ...paths);
+  };
+
+  const assistantWindow = new BrowserWindow({
+    width: 900,
+    height: 700,
+    icon: getAssetPath('icon.png'),
+    autoHideMenuBar: true,
+    title: 'Sprechstunden Assistent',
+    webPreferences: {
+      preload: app.isPackaged
+        ? path.join(__dirname, 'preload.js')
+        : path.join(__dirname, '../../.erb/dll/preload.js'),
+      devTools: false,
+    },
+  });
+
+  assistantWindow.loadURL(
+    resolveHtmlPath('index.html') + '#/sprechstunde-assistant',
+  );
+
+  assistantWindow.on('closed', () => {
     // Window will be automatically garbage collected
   });
 };

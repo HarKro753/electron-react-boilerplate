@@ -19,7 +19,7 @@ export default function AppBarItem({ icon, label, onClick }: AppBarItemProps) {
         {icon}
       </button>
       {label && (
-        <span className="text-xs text-center font-medium text-gray-700 max-w-16 leading-tight">
+        <span className="text-xs text-center font-medium text-gray-700 max-w-16 leading-tight overflow-clip">
           {label}
         </span>
       )}
