@@ -18,7 +18,7 @@ export default function PatientToolbar({
   onToggleChatWindow,
 }: PatientToolbarProps) {
   return (
-    <div className="w-full bg-white mb-4 flex flex-row items-center py-2 px-2 gap-2 pr-2">
+    <div className="w-full h-10 bg-white mb-4 flex flex-row items-center py-2 px-2 gap-2 pr-2 border-b border-l">
       <button
         type="button"
         className="w-6 h-6 rounded-sm flex items-center justify-center cursor-pointer hover:bg-gray-100"
