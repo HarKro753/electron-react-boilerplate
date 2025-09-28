@@ -1,8 +1,8 @@
 interface BesucherCardProps {
   name: string;
   date: string;
-  isSelected?: boolean;
-  onClick?: () => void;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
 export default function BesucherCard({
@@ -15,7 +15,7 @@ export default function BesucherCard({
 
   return (
     <div
-      className={`border-b flex flex-row p-2 hover:bg-gray-200 cursor-pointer ${isSelected ? 'bg-blue-100' : ''}`}
+      className={`border-b flex flex-row p-2 hover:bg-gray-100 cursor-pointer ${isSelected ? 'bg-gray-200' : ''} `}
       onClick={onClick}
     >
       <div className="bg-gray-300 rounded-full w-16 h-16 justify-center items-center flex text-2xl font-semibold text-white">
