@@ -26,7 +26,7 @@ function PatientInfos({ selectedPatient }: PatientInfosProps) {
           </div>
 
           <div className="flex flex-row gap-2">
-            <div className="w-8 h-8 border border-gray-300 rounded-sm flex items-center justify-center">
+            <div className="w-8 h-8 border-r border-l border-gray-300 rounded-sm flex items-center justify-center">
               <User className="w-4 h-4 text-gray-500" />
             </div>
             <div className="w-8 h-8 border border-gray-300 rounded-sm flex items-center justify-center">
