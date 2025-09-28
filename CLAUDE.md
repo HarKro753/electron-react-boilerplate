@@ -15,17 +15,44 @@ This is an Electron React Boilerplate application built with:
 ### Project Structure
 
 - `src/main/` - Electron main process code (main.ts, menu.ts, preload.ts, util.ts)
-- `src/renderer/` - React renderer process code (App.tsx, index.tsx, App.css)
+- `src/renderer/` - React renderer process code with organized folder structure:
+  - `pages/` - Main application pages and routes
+  - `components/` - Reusable React components
+  - `Widgets/` - Small UI widgets and form elements
+  - `Templates/` - Layout templates and higher-order components
+  - `hooks/` - Custom React hooks
+  - `context/` - React context providers
+  - `models/` - TypeScript type definitions and interfaces
+  - `api/` - API client functions and external service integrations
+  - `repository/` - Data access layer and business logic
 - `assets/` - Application icons and resources
 - `release/` - Build output and packaging configuration
 - `.erb/` - Build system configuration (webpack, scripts, DLL bundling)
 
+#### Renderer Folder Details
+
+- **`pages/`** - Top-level application views and routes. Contains the main screens users navigate to.
+- **`components/`** - Reusable React components like AppBar, ChatWindow, PatientData, etc.
+- **`Widgets/`** - Small, focused UI elements like buttons, cards, checkboxes, and form controls.
+- **`Templates/`** - Layout components and wrappers that provide structure to pages and sections.
+- **`hooks/`** - Custom React hooks for shared logic like useAudioLevels, useChat, etc.
+- **`context/`** - React context providers for global state management.
+- **`models/`** - TypeScript interfaces and type definitions for data structures.
+- **`api/`** - Functions for external API calls and service integrations.
+- **`repository/`** - Data access layer containing business logic and data retrieval functions.
+
 ### Key Components
 
 - **Main Process** (`src/main/main.ts`): Handles window creation, app lifecycle, IPC communication, auto-updater
-- **Renderer Process** (`src/renderer/App.tsx`): Simple React app with routing and basic UI
+- **Renderer Process** (`src/renderer/App.tsx`): React app with routing and navigation between pages
 - **Preload Script** (`src/main/preload.ts`): Secure bridge between main and renderer processes
 - **Menu Builder** (`src/main/menu.ts`): Application menu configuration
+
+#### Main Application Pages
+
+- **MainPage** (`src/renderer/pages/MainPage.tsx`): Primary patient management interface with patient list, patient info display, document viewer, and integrated chat window. Features patient selection, document organization, and AI assistant integration.
+- **SprechstundeAssistent** (`src/renderer/pages/SprechstundeAssistent.tsx`): Audio recording and analysis interface for consultation sessions. Includes microphone selection, real-time audio level visualization, recording controls, and analysis configuration for different consultation types.
+- **SprechstundeVorlage** (`src/renderer/pages/SprechstundeVorlage.tsx`): Template page for consultation workflows (currently minimal implementation).
 
 ## Development Commands
 

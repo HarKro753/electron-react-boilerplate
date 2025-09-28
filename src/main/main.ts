@@ -159,8 +159,8 @@ const createSprechstundeAssistantWindow = async () => {
   };
 
   const assistantWindow = new BrowserWindow({
-    width: 900,
-    height: 700,
+    width: 700,
+    height: 900,
     icon: getAssetPath('icon.png'),
     autoHideMenuBar: true,
     title: 'Sprechstunden Assistent',
@@ -173,7 +173,7 @@ const createSprechstundeAssistantWindow = async () => {
   });
 
   assistantWindow.loadURL(
-    resolveHtmlPath('index.html') + '#/sprechstunde-assistant',
+    `${resolveHtmlPath('index.html')}#/sprechstunde-assistant`,
   );
 
   assistantWindow.on('closed', () => {

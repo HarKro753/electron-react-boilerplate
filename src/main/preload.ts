@@ -2,7 +2,10 @@
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'ipc-example' | 'open-new-window' | 'open-sprechstunde-assistant';
+export type Channels =
+  | 'ipc-example'
+  | 'open-new-window'
+  | 'open-sprechstunde-assistant';
 
 const electronHandler = {
   ipcRenderer: {

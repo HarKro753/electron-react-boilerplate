@@ -77,7 +77,7 @@ export async function* agenticQueryStream(
     let currentContent = '';
 
     for (let i = 0; i < words.length; i++) {
-      currentContent += words[i] + ' ';
+      currentContent += `${words[i]} `;
       yield createChatResponse(currentContent.trim());
 
       await new Promise((resolve) => setTimeout(resolve, 100));
