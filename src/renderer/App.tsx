@@ -48,9 +48,9 @@ function App() {
         {/* Patient Dokumente */}
         <WindowWithHeader className="flex-[3]" contentClassName="">
           <div className="flex flex-col">
-            <PatientToolbar 
-              isChatWindowOpen={isChatWindowOpen} 
-              onToggleChatWindow={() => setIsChatWindowOpen(!isChatWindowOpen)} 
+            <PatientToolbar
+              isChatWindowOpen={isChatWindowOpen}
+              onToggleChatWindow={() => setIsChatWindowOpen(!isChatWindowOpen)}
             />
             <PatientData groupedRecords={groupedRecords} />
           </div>
